@@ -84,7 +84,7 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className={`relative p-6 md:p-8 rounded-xl border transition-all duration-500 premium-shimmer overflow-hidden group ${
                   isActive
-                    ? "border-yellow-500/60 shadow-lg shadow-yellow-500/10 bg-zinc-900/65 scale-[1.01]"
+                    ? "border-yellow-500/60 shadow-[0_0_30px_rgba(234,179,8,0.18)] bg-zinc-900/70 scale-[1.02]"
                     : "border-zinc-800/80 bg-zinc-900/40 shadow-md hover:border-red-500/30"
                 }`}
               >
@@ -96,7 +96,7 @@ export default function Services() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.4 }}
-                      className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_left_center,rgba(250,204,21,0.16),transparent_60%)] pointer-events-none z-0"
+                      className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_left_center,rgba(254,240,138,0.28)_0%,rgba(234,179,8,0.12)_45%,rgba(234,179,8,0.02)_70%,transparent_100%)] pointer-events-none z-0"
                       style={{ mixBlendMode: "screen" }}
                     />
                   )}
@@ -118,7 +118,7 @@ export default function Services() {
                     <h3
                       className={`text-xl font-bold transition-colors duration-300 flex items-center gap-2 ${
                         isActive
-                          ? "text-yellow-400 text-shadow-yellow"
+                          ? "text-yellow-400 drop-shadow-[0_0_8px_rgba(234,179,8,0.55)]"
                           : "text-white group-hover:text-red-400"
                       }`}
                     >

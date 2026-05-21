@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { User, Layers } from "lucide-react";
-import { fleet, FleetType } from "../utils/mockData";
+import { fleet } from "../utils/mockData";
+import type { FleetType } from "../utils/mockData";
 
 interface FleetProps {
   onBookCar: (category: FleetType) => void;

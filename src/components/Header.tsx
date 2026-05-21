@@ -23,17 +23,14 @@ export default function Header() {
     <>
       {/* Dynamic Header & Navigation */}
       <nav
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          isHeaderScrolled
-            ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 py-3 shadow-lg shadow-black/30"
-            : "bg-transparent py-5"
-        }`}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${isHeaderScrolled
+          ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 py-3 shadow-lg shadow-black/30"
+          : "bg-transparent py-5"
+          }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-2 text-lg font-black tracking-tighter sm:text-xl group">
-            <span className="h-6 w-1 bg-red-500 rounded-full group-hover:scale-y-125 transition-transform duration-300" />
-            <span className="text-white">REAL CARS</span>
-            <span className="text-red-500 font-extrabold tracking-wide">TRANSPORT</span>
+            <img src="/images/logo.png" alt="" width={80} />
           </a>
 
           {/* Desktop Nav */}

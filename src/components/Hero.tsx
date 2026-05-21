@@ -25,11 +25,6 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-3xl space-y-6"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-950/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
-            Verified Luxury Fleet • Akure
-          </div>
-
           <h1 className="text-4xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-white">
             Luxury Car Hire <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-400">

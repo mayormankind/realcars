@@ -11,20 +11,56 @@ export default function TopDownCar({ className }: TopDownCarProps) {
       viewBox="0 0 50 90"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ overflow: "visible" }}
     >
-      {/* Headlight beams (Ambient laser light glow - vibrant gold/yellow) */}
+      {/* Front road illumination (reflection on the immediate road surface) */}
+      <ellipse cx="25" cy="-20" rx="45" ry="30" fill="url(#roadReflection)" opacity="0.7" />
+
+      {/* Headlight beams (Ambient laser light glow - realistic left/right dual beams) */}
       <path
-        d="M10 -5 L-40 -120 L90 -120 L40 -5 Z"
-        fill="url(#headlightBeam)"
+        d="M 12 11 L -80 -250 L 30 -250 Z"
+        fill="url(#leftBeam)"
         className="animate-headlight"
+        style={{ mixBlendMode: "screen" }}
+      />
+      <path
+        d="M 38 11 L 20 -250 L 130 -250 Z"
+        fill="url(#rightBeam)"
+        className="animate-headlight"
+        style={{ mixBlendMode: "screen" }}
       />
 
       <defs>
-        <linearGradient id="headlightBeam" x1="25" y1="-5" x2="25" y2="-120" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#facc15" stopOpacity="0.85" />
-          <stop offset="40%" stopColor="#eab308" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#fef08a" stopOpacity="0" />
+        {/* Linear Gradients for left and right headlights, fading to yellow/amber and then transparent */}
+        <linearGradient id="leftBeam" x1="12" y1="11" x2="-34" y2="-250" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="15%" stopColor="#fef08a" stopOpacity="0.9" />
+          <stop offset="50%" stopColor="#eab308" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
         </linearGradient>
+
+        <linearGradient id="rightBeam" x1="38" y1="11" x2="75" y2="-250" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="15%" stopColor="#fef08a" stopOpacity="0.9" />
+          <stop offset="50%" stopColor="#eab308" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
+        </linearGradient>
+
+        {/* Road surface reflection gradient */}
+        <radialGradient id="roadReflection" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="25%" stopColor="#fef08a" stopOpacity="0.75" />
+          <stop offset="60%" stopColor="#eab308" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
+        </radialGradient>
+
+        {/* Headlight bulb intense glare */}
+        <radialGradient id="bulbGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="30%" stopColor="#fef08a" stopOpacity="0.95" />
+          <stop offset="70%" stopColor="#eab308" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
+        </radialGradient>
       </defs>
 
       {/* Car Shadow */}
@@ -68,7 +104,9 @@ export default function TopDownCar({ className }: TopDownCarProps) {
       {/* Sunroof Grid */}
       <rect x="15" y="39" width="20" height="13" rx="2" fill="#27272a" stroke="#3f3f46" strokeWidth="0.5" />
 
-      {/* LED Glowing Headlights (Brighter amber core) */}
+      {/* LED Glowing Headlights (Brighter amber core) with intense bulb glare */}
+      <circle cx="12" cy="11" r="5" fill="url(#bulbGlow)" />
+      <circle cx="38" cy="11" r="5" fill="url(#bulbGlow)" />
       <ellipse cx="12" cy="11" rx="2.5" ry="1.5" fill="#ffffff" stroke="#facc15" strokeWidth="0.5" className="animate-pulse" />
       <ellipse cx="38" cy="11" rx="2.5" ry="1.5" fill="#ffffff" stroke="#facc15" strokeWidth="0.5" className="animate-pulse" />
 

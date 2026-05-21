@@ -68,7 +68,7 @@ export const fleet: FleetItem[] = [
     type: "Luxury",
     seats: 7,
     transmission: "Automatic",
-    rate: "NGN 95,000/day",
+    rate: "₦95,000/day",
     tagline: "Premium executive presence, ideal for delegations."
   },
   {
@@ -76,7 +76,7 @@ export const fleet: FleetItem[] = [
     type: "Economy",
     seats: 5,
     transmission: "Automatic",
-    rate: "NGN 42,000/day",
+    rate: "₦42,000/day",
     tagline: "Ultra-efficient metropolitan commuter, absolute reliability."
   },
   {
@@ -84,7 +84,7 @@ export const fleet: FleetItem[] = [
     type: "SUV",
     seats: 5,
     transmission: "Automatic",
-    rate: "NGN 60,000/day",
+    rate: "₦60,000/day",
     tagline: "Versatile crossover comfort, outstanding road visibility."
   },
   {
@@ -92,7 +92,7 @@ export const fleet: FleetItem[] = [
     type: "Luxury",
     seats: 5,
     transmission: "Automatic",
-    rate: "NGN 110,000/day",
+    rate: "₦110,000/day",
     tagline: "High-end elegance and athletic power, unmatched style."
   },
   {
@@ -100,7 +100,7 @@ export const fleet: FleetItem[] = [
     type: "Economy",
     seats: 5,
     transmission: "Automatic",
-    rate: "NGN 38,000/day",
+    rate: "₦38,000/day",
     tagline: "Sleek aerodynamic efficiency and modern cabin tech."
   },
 ];
