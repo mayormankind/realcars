@@ -34,17 +34,17 @@ export default function Header() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden gap-8 text-sm font-semibold text-zinc-400 md:flex items-center">
-            <a className="hover:text-white transition-colors duration-200" href="#services">
+          <div className="hidden gap-8 text-sm font-semibold text-white md:flex items-center">
+            <a className="hover:text-red-400 transition-colors duration-200" href="#services">
               Services
             </a>
-            <a className="hover:text-white transition-colors duration-200" href="#fleet">
+            <a className="hover:text-red-400 transition-colors duration-200" href="#fleet">
               Fleet
             </a>
-            <a className="hover:text-white transition-colors duration-200" href="#quote">
+            <a className="hover:text-red-400 transition-colors duration-200" href="#quote">
               Book Vehicle
             </a>
-            <a className="hover:text-white transition-colors duration-200" href="#faq">
+            <a className="hover:text-red-400 transition-colors duration-200" href="#faq">
               FAQs
             </a>
             <a
