@@ -1,16 +1,18 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <header
+    <section
       id="top"
+      aria-label="Hero"
       className="relative min-h-screen overflow-hidden flex items-center bg-zinc-950 text-white pt-16"
     >
       <img
         src="/images/hero-car-rental.jpg"
         alt="Premium luxury car rental service fleet"
+        fetchPriority="high"
+        loading="eager"
         className="absolute inset-0 h-full w-full object-cover opacity-35"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
@@ -65,6 +67,6 @@ export default function Hero() {
           />
         </div>
       </div>
-    </header>
+    </section>
   );
 }

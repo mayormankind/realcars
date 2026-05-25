@@ -23,6 +23,7 @@ export default function Header() {
     <>
       {/* Dynamic Header & Navigation */}
       <nav
+        aria-label="Main navigation"
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${isHeaderScrolled
           ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 py-3 shadow-lg shadow-black/30"
           : "bg-transparent py-5"
@@ -30,7 +31,7 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-2 text-lg font-black tracking-tighter sm:text-xl group">
-            <img src="/images/logo.png" alt="" width={80} />
+            <img src="/images/logo.png" alt="Real Cars Transport" width={80} />
           </a>
 
           {/* Desktop Nav */}
