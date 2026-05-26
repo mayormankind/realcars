@@ -118,3 +118,13 @@
     background-position: 200% 0;
   }
 }
+
+/* Moving road dashes — gives the highway lane a live driving feel */
+@keyframes road-scroll {
+  from { background-position: center 0px; }
+  to   { background-position: center 24px; }
+}
+
+.animate-road-scroll {
+  animation: road-scroll 0.32s linear infinite;
+}

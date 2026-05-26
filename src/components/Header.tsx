@@ -6,6 +6,7 @@ import { WhatsAppIcon, InstagramIcon, FacebookIcon } from "./icons";
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,26 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["services", "fleet", "quote", "faq"];
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    const heroObserver = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) setActiveSection(""); },
+      { threshold: 0.2 }
+    );
+    ids.forEach((id) => { const el = document.getElementById(id); if (el) sectionObserver.observe(el); });
+    const hero = document.getElementById("top");
+    if (hero) heroObserver.observe(hero);
+    return () => { sectionObserver.disconnect(); heroObserver.disconnect(); };
   }, []);
 
   return (
@@ -31,21 +52,21 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
           <a href="#top" className="flex items-center gap-2 text-lg font-black tracking-tighter sm:text-xl group">
-            <img src="/images/logo.png" alt="Real Cars Transport" width={80} />
+            <img src="/images/logo.png" alt="Real Cars Transport" width={70} />
           </a>
 
           {/* Desktop Nav */}
           <div className="hidden gap-8 text-sm font-semibold text-white md:flex items-center">
-            <a className="hover:text-red-400 transition-colors duration-200" href="#services">
+            <a className={`transition-colors duration-200 ${activeSection === "services" ? "text-red-400" : "hover:text-red-400"}`} href="#services">
               Services
             </a>
-            <a className="hover:text-red-400 transition-colors duration-200" href="#fleet">
+            <a className={`transition-colors duration-200 ${activeSection === "fleet" ? "text-red-400" : "hover:text-red-400"}`} href="#fleet">
               Fleet
             </a>
-            <a className="hover:text-red-400 transition-colors duration-200" href="#quote">
+            <a className={`transition-colors duration-200 ${activeSection === "quote" ? "text-red-400" : "hover:text-red-400"}`} href="#quote">
               Book Vehicle
             </a>
-            <a className="hover:text-red-400 transition-colors duration-200" href="#faq">
+            <a className={`transition-colors duration-200 ${activeSection === "faq" ? "text-red-400" : "hover:text-red-400"}`} href="#faq">
               FAQs
             </a>
             <a
@@ -80,28 +101,28 @@ export default function Header() {
             <div className="flex flex-col gap-6 text-center text-lg font-bold">
               <a
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-zinc-300 hover:text-white transition-colors"
+                className={`py-2 transition-colors font-bold ${activeSection === "services" ? "text-red-400" : "text-zinc-300 hover:text-white"}`}
                 href="#services"
               >
                 Our Services
               </a>
               <a
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-zinc-300 hover:text-white transition-colors"
+                className={`py-2 transition-colors font-bold ${activeSection === "fleet" ? "text-red-400" : "text-zinc-300 hover:text-white"}`}
                 href="#fleet"
               >
                 Available Fleet
               </a>
               <a
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-zinc-300 hover:text-white transition-colors"
+                className={`py-2 transition-colors font-bold ${activeSection === "quote" ? "text-red-400" : "text-zinc-300 hover:text-white"}`}
                 href="#quote"
               >
                 Instant Booking
               </a>
               <a
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-zinc-300 hover:text-white transition-colors"
+                className={`py-2 transition-colors font-bold ${activeSection === "faq" ? "text-red-400" : "text-zinc-300 hover:text-white"}`}
                 href="#faq"
               >
                 FAQs

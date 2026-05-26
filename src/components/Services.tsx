@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useVelocity, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { servicesData } from "../utils/mockData";
 import TopDownCar from "./TopDownCar";
@@ -13,6 +13,10 @@ export default function Services() {
 
   // Smooth scroll translation for top-down luxury car (relative percentage animation)
   const carTop = useTransform(scrollYProgress, [0.15, 0.85], ["0%", "85%"]);
+
+  // Velocity-based tilt — car leans with scroll momentum
+  const scrollVelocity = useVelocity(scrollYProgress);
+  const carRotate = useTransform(scrollVelocity, [-2, 0, 2], [12, 0, -12]);
 
   const [activeServiceIndex, setActiveServiceIndex] = useState<number | null>(null);
 
@@ -57,15 +61,34 @@ export default function Services() {
 
         {/* The Vertical Highway Lane */}
         <div className="relative justify-self-center w-3 md:w-10 bg-zinc-950 border-x border-zinc-900 rounded-full py-6 shadow-inner shadow-black/80">
-          {/* Dashed White Center Lines */}
-          <div className="absolute inset-y-0 left-1/2 w-0 border-l border-dashed border-zinc-700 -translate-x-1/2 md:border-l-2" />
+          {/* Animated moving road dashes — scrolls continuously to feel like the car is driving */}
+          <div
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] animate-road-scroll"
+            style={{
+              backgroundImage: "repeating-linear-gradient(to bottom, #52525b 0px, #52525b 12px, transparent 12px, transparent 24px)",
+              backgroundSize: "2px 24px",
+            }}
+          />
 
           {/* Animated top-down luxury car linked to viewport scroll progress */}
           <motion.div
-            style={{ top: carTop }}
+            style={{ top: carTop, rotate: carRotate }}
             className="absolute left-1/2 -translate-x-1/2 z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
           >
             <TopDownCar className="w-7 h-12 md:w-12 md:h-22" />
+
+            {/* Exhaust particles — drift downward from rear of car */}
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none">
+              {[0, 1].map((i) => (
+                <motion.div
+                  key={i}
+                  className="rounded-full bg-zinc-400/40"
+                  style={{ width: 4 - i, height: 4 - i }}
+                  animate={{ y: [0, 16], opacity: [0.55, 0], scale: [1, 2.2] }}
+                  transition={{ repeat: Infinity, duration: 0.7, delay: i * 0.25, ease: "easeOut" }}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
 

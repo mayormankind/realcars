@@ -24,9 +24,10 @@ export default function Footer() {
         <div className="space-y-5">
           <a href="#top" className="flex items-center gap-2 text-lg font-black tracking-tighter">
             <img src="images/logo.png" alt="REAL CARS TRANSPORT" className="h-12 w-auto" />
-            {/* <span className="h-6 w-1 bg-red-500 rounded-full" /> */}
-            <span className="text-white">REAL CARS</span>
-            {/* <span className="text-red-500 font-extrabold">TRANSPORT</span> */}
+            <div className="flex flex-col">
+              <span className="text-white">REAL CARS</span>
+              <span className="text-red-500 font-extrabold">TRANSPORT</span>
+            </div>
           </a>
           <p className="text-zinc-400 text-xs leading-relaxed">
             Akure's premier operator of premium travel, self-drive, and luxury transport. Redefining your standard of comfort since 2020.
