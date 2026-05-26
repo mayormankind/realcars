@@ -128,3 +128,12 @@
 .animate-road-scroll {
   animation: road-scroll 0.32s linear infinite;
 }
+
+/* Hide scrollbar on fleet carousel while keeping scroll functionality */
+.carousel-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel-scroll::-webkit-scrollbar {
+  display: none;
+}

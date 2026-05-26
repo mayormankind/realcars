@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, ArrowUpRight } from "lucide-react";
 import { WhatsAppIcon, InstagramIcon, FacebookIcon } from "./icons";
 
 export default function Footer() {
@@ -89,34 +89,47 @@ export default function Footer() {
         <div className="space-y-5">
           <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Direct Communication</h3>
 
-          {/* Social icons grid */}
-          <div className="grid grid-cols-2 gap-2 text-xs font-bold">
-            {/* WhatsApp Hotline 1 */}
+          {/* Social channel cards — vertical list */}
+          <div className="space-y-2">
+
+            {/* WhatsApp — Bookings */}
             <a
               href="https://wa.me/2349039944383"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 p-2 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:bg-emerald-950/20 hover:border-emerald-500/30 transition-all text-zinc-300 hover:text-emerald-400 group"
+              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/40 hover:bg-emerald-950/20 transition-all duration-200 group"
             >
-              <div className="relative">
-                <WhatsAppIcon className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
-                <span className="absolute -top-0.5 -right-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all">
+                <div className="relative">
+                  <WhatsAppIcon className="w-5 h-5 text-emerald-400" />
+                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 border-2 border-zinc-900 animate-pulse" />
+                </div>
               </div>
-              <span className="truncate">WhatsApp 1</span>
+              <div className="min-w-0 flex-1">
+                <div className="text-white text-xs font-bold leading-tight">WhatsApp Bookings</div>
+                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">+234 903 994 4383</div>
+              </div>
+              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-emerald-400 flex-shrink-0 transition-colors" />
             </a>
 
-            {/* WhatsApp Hotline 2 */}
+            {/* WhatsApp — Support */}
             <a
               href="https://wa.me/2348120124847"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 p-2 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:bg-emerald-950/20 hover:border-emerald-500/30 transition-all text-zinc-300 hover:text-emerald-400 group"
+              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/40 hover:bg-emerald-950/20 transition-all duration-200 group"
             >
-              <div className="relative">
-                <WhatsAppIcon className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
-                <span className="absolute -top-0.5 -right-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all">
+                <div className="relative">
+                  <WhatsAppIcon className="w-5 h-5 text-emerald-400" />
+                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 border-2 border-zinc-900 animate-pulse" />
+                </div>
               </div>
-              <span className="truncate">WhatsApp 2</span>
+              <div className="min-w-0 flex-1">
+                <div className="text-white text-xs font-bold leading-tight">WhatsApp Support</div>
+                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">+234 812 012 4847</div>
+              </div>
+              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-emerald-400 flex-shrink-0 transition-colors" />
             </a>
 
             {/* Instagram */}
@@ -124,10 +137,16 @@ export default function Footer() {
               href="https://instagram.com/realcarstransport"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 p-2 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:bg-pink-950/20 hover:border-pink-500/30 transition-all text-zinc-300 hover:text-pink-400 group"
+              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-pink-500/40 hover:bg-pink-950/20 transition-all duration-200 group"
             >
-              <InstagramIcon className="w-5 h-5 text-pink-500 group-hover:scale-110 transition-transform" />
-              <span className="truncate">Instagram</span>
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center group-hover:bg-pink-500/20 group-hover:border-pink-500/40 transition-all">
+                <InstagramIcon className="w-5 h-5 text-pink-400" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-white text-xs font-bold leading-tight">Instagram</div>
+                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">@realcarstransport</div>
+              </div>
+              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-pink-400 flex-shrink-0 transition-colors" />
             </a>
 
             {/* Facebook */}
@@ -135,20 +154,35 @@ export default function Footer() {
               href="https://facebook.com/realcarstransportmondial"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 p-2 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:bg-blue-950/20 hover:border-blue-500/30 transition-all text-zinc-300 hover:text-blue-400 group"
+              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-blue-500/40 hover:bg-blue-950/20 transition-all duration-200 group"
             >
-              <FacebookIcon className="w-5 h-5 text-blue-500 group-hover:scale-110 transition-transform" />
-              <span className="truncate">Facebook</span>
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/40 transition-all">
+                <FacebookIcon className="w-5 h-5 text-blue-400" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-white text-xs font-bold leading-tight">Facebook</div>
+                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">realcarstransportmondial</div>
+              </div>
+              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-blue-400 flex-shrink-0 transition-colors" />
             </a>
 
-            {/* Phone Direct – spans full width */}
+            {/* Phone — direct call CTA */}
             <a
               href="tel:07062002717"
-              className="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:bg-red-950/30 hover:border-red-500/40 transition-all text-zinc-300 hover:text-red-400 group"
+              className="flex items-center gap-3 p-3 rounded-xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 hover:border-red-500/50 transition-all duration-200 group"
             >
-              <Phone className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
-              <span>Call Center: 0706 200 2717</span>
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center group-hover:bg-red-500/30 transition-all">
+                <Phone className="w-5 h-5 text-red-400" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-white text-xs font-bold leading-tight">Call Directly</div>
+                <div className="text-zinc-400 text-[10px] font-medium mt-0.5">0706 200 2717</div>
+              </div>
+              <span className="flex-shrink-0 text-[9px] font-black uppercase tracking-wider text-red-400 bg-red-500/10 border border-red-500/20 rounded-full px-2 py-0.5">
+                Live
+              </span>
             </a>
+
           </div>
 
           {/* VIP Newsletter Form */}
