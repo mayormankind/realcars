@@ -20,6 +20,36 @@ export default function BookingForm({ selectedCategory, setSelectedCategory }: B
 
   const handleQuoteSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    // Format dispatch date to human-readable form
+    const formattedDate = bookingDate
+      ? new Date(bookingDate).toLocaleDateString("en-NG", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      : "Not specified";
+
+    // Build structured WhatsApp message
+    const message = [
+      `🚗 *New Booking Request — Real Cars Transport*`,
+      ``,
+      `👤 *Name:* ${bookingName}`,
+      `📞 *Phone:* ${bookingPhone}`,
+      `📍 *Pickup Point:* ${bookingLocation}`,
+      `📅 *Dispatch Date:* ${formattedDate}`,
+      `🔧 *Service:* ${bookingService}`,
+      `🚙 *Fleet Category:* ${selectedCategory}`,
+      ``,
+      `Kindly confirm availability and rate. Thank you.`,
+    ].join("\n");
+
+    // Open WhatsApp Bookings line with pre-filled message
+    const waUrl = `https://wa.me/2349039944383?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+
+    // Show success overlay
     setSubmittedName(bookingName);
     setSubmittedCategory(selectedCategory || "Requested");
     setIsSubmitted(true);
@@ -69,7 +99,7 @@ export default function BookingForm({ selectedCategory, setSelectedCategory }: B
                 transition={{ delay: 0.1 }}
                 className="text-2xl font-black text-white"
               >
-                Reservation Proposal Lodged!
+                Booking Dispatched!
               </motion.h3>
 
               <motion.p
@@ -78,7 +108,8 @@ export default function BookingForm({ selectedCategory, setSelectedCategory }: B
                 transition={{ delay: 0.18 }}
                 className="text-zinc-400 mt-3 max-w-md text-sm leading-relaxed"
               >
-                Thank you, <span className="text-white font-bold">{submittedName}</span>. We are checking status on our <span className="text-red-400 font-bold">{submittedCategory}</span> fleet category. A transport manager will reach you on phone within 15 minutes!
+                Thank you, <span className="text-white font-bold">{submittedName}</span>. WhatsApp has opened with your <span className="text-red-400 font-bold">{submittedCategory}</span> booking details pre-filled — just hit <span className="text-emerald-400 font-bold">Send</span> to confirm your reservation with our dispatch team. A transport manager will reach you on phone within 15 minutes!
+
               </motion.p>
 
               <motion.button
