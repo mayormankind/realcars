@@ -8,6 +8,7 @@ export interface ServiceItem {
   icon: typeof Crown | typeof Key | typeof Compass | typeof ShieldCheck | typeof Coins;
   color: string;
   glow: string;
+  image: string;
 }
 
 export interface FleetItem {
@@ -30,35 +31,40 @@ export const servicesData: ServiceItem[] = [
     description: "Arrive in style. Experience premium comfort in our top-tier chauffeur-driven luxury sedans and executive SUVs, tailored for red-carpet events, delegations, and elite arrivals.",
     icon: Crown,
     color: "from-yellow-500/10 via-zinc-900 to-zinc-950",
-    glow: "shadow-yellow-500/5 hover:shadow-yellow-500/20"
+    glow: "shadow-yellow-500/5 hover:shadow-yellow-500/20",
+    image: "/images/cars/luxurycar-hire.png"
   },
   {
     title: "Self-drive services",
     description: "Total control. Enjoy private independence behind the wheel of our exceptionally maintained, fully-vetted sports models, executive cruisers, and economical vehicles.",
     icon: Key,
     color: "from-zinc-900 to-zinc-950",
-    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25"
+    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25",
+    image: "/images/cars/selfdrive-experience.png"
   },
   {
     title: "Inter-state travel trips",
     description: "Reliable long-distance journeys. Safe, high-speed routes connecting Akure to nationwide destinations, optimized by verified professional long-haul drivers.",
     icon: Compass,
     color: "from-zinc-900 to-zinc-950",
-    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25"
+    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25",
+    image: "/images/cars/interstate-drive.png"
   },
   {
     title: "Contract driver services",
     description: "Elite personal transits. Hire highly vetted, secure, and professional personal chauffeurs on short-term contracts to manage all your daily commutes.",
     icon: ShieldCheck,
     color: "from-zinc-900 to-zinc-950",
-    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25"
+    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25",
+    image: "/images/cars/lexus-rx350.jpg"
   },
   {
     title: "Buy & sell used/Tokunbo cars",
     description: "Transparent car dealership. Direct sales and reliable valuation on premium local and foreign pre-owned vehicles, thoroughly detailed and mechanical-inspected.",
     icon: Coins,
     color: "from-zinc-900 to-zinc-950",
-    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25"
+    glow: "shadow-zinc-500/5 hover:shadow-yellow-500/25",
+    image: "/images/cars/preowned-sales.png"
   }
 ];
 

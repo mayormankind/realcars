@@ -1,7 +1,15 @@
-import { useState, FormEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Mail, Phone, ArrowUpRight } from "lucide-react";
-import { WhatsAppIcon, InstagramIcon, FacebookIcon } from "./icons";
+import { useState } from "react";
+import type { FormEvent } from "react";
+// import { AnimatePresence, motion } from "framer-motion";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { 
+  WhatsAppIcon, 
+  InstagramIcon, 
+  FacebookIcon, 
+  TwitterIcon, 
+  LinkedInIcon,
+  HeadphonesIcon
+} from "./icons";
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -17,212 +25,169 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-zinc-950 border-t border-zinc-900 pt-20 pb-8 text-sm">
-      <div className="mx-auto w-full max-w-6xl px-6 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-
-        {/* Column 1: Brand details */}
-        <div className="space-y-5">
-          <a href="#top" className="flex items-center gap-2 text-lg font-black tracking-tighter">
-            <img src="images/logo.png" alt="REAL CARS TRANSPORT" className="h-12 w-auto" />
-            <div className="flex flex-col">
-              <span className="text-white">REAL CARS</span>
-              <span className="text-red-500 font-extrabold">TRANSPORT</span>
-            </div>
-          </a>
-          <p className="text-zinc-400 text-xs leading-relaxed">
-            Akure's premier operator of premium travel, self-drive, and luxury transport. Redefining your standard of comfort since 2020.
-          </p>
-          <div className="inline-flex items-center gap-1.5 rounded-lg bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-400">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse-light" />
-            24/7 Akure Dispatch Active
-          </div>
-        </div>
-
-        {/* Column 2: Operations Nav */}
-        <div className="space-y-4">
-          <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Operations</h3>
-          <ul className="space-y-2.5 text-zinc-400 font-medium">
-            <li>
-              <a className="hover:text-red-500 transition-colors" href="#services">Our Fleet Services</a>
-            </li>
-            <li>
-              <a className="hover:text-red-500 transition-colors" href="#fleet">Available Fleet</a>
-            </li>
-            <li>
-              <a className="hover:text-red-500 transition-colors" href="#quote">Vehicle Booking</a>
-            </li>
-            <li>
-              <a className="hover:text-red-500 transition-colors" href="#faq">Direct FAQs</a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 3: Contact & Click-to-Email */}
-        <div className="space-y-4">
-          <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Contact Center</h3>
-          <div className="space-y-3">
-            {/* Address card */}
-            <div className="p-3 bg-zinc-900/60 border border-zinc-900 rounded-lg space-y-1">
-              <div className="text-[10px] uppercase font-bold text-zinc-500">Head Office</div>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Beside Oyebade close, FUTA Southgate, Akure, Ondo State.
-              </p>
-            </div>
-
-            {/* Clickable Email Redirect */}
-            <a
-              href="mailto:info@realcarstransport.com"
-              className="block p-3 bg-zinc-900/60 border border-zinc-900 rounded-lg space-y-1 hover:border-red-500/50 hover:bg-zinc-900/80 transition-all duration-200 group"
-            >
-              <div className="text-[10px] uppercase font-bold text-zinc-500 group-hover:text-red-400 transition-colors">
-                Email Support
-              </div>
-              <p className="text-zinc-300 font-semibold text-xs flex items-center gap-1.5 group-hover:text-white transition-colors">
-                <Mail size={12} className="text-zinc-500 group-hover:text-red-500 transition-colors" />
-                info@realcarstransport.com
-              </p>
-            </a>
-          </div>
-        </div>
-
-        {/* Column 4: Premium Social Icons & Newsletter */}
-        <div className="space-y-5">
-          <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Direct Communication</h3>
-
-          {/* Social channel cards — vertical list */}
-          <div className="space-y-2">
-
-            {/* WhatsApp — Bookings */}
-            <a
-              href="https://wa.me/2349039944383"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/40 hover:bg-emerald-950/20 transition-all duration-200 group"
-            >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all">
-                <div className="relative">
-                  <WhatsAppIcon className="w-5 h-5 text-emerald-400" />
-                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 border-2 border-zinc-900 animate-pulse" />
+    <footer id="contact" className="bg-zinc-950 border-t border-zinc-900 pt-16 pb-8 text-sm">
+      <div className="mx-auto w-full max-w-7xl px-6">
+        
+        {/* Main Footer Grid */}
+        <div className="grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-16">
+          
+          {/* Column 1: Brand & Description */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-6">
+            <a href="#top" className="flex items-center gap-3">
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                  </svg>
                 </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-white text-xs font-bold leading-tight">WhatsApp Bookings</div>
-                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">+234 903 994 4383</div>
+              <div className="flex flex-col">
+                <span className="text-white font-black text-lg tracking-tight">REAL CARS</span>
+                <span className="text-red-500 font-extrabold text-lg tracking-tight">TRANSPORT</span>
               </div>
-              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-emerald-400 flex-shrink-0 transition-colors" />
             </a>
-
-            {/* WhatsApp — Support */}
-            <a
-              href="https://wa.me/2348120124847"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-emerald-500/40 hover:bg-emerald-950/20 transition-all duration-200 group"
-            >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all">
-                <div className="relative">
-                  <WhatsAppIcon className="w-5 h-5 text-emerald-400" />
-                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 border-2 border-zinc-900 animate-pulse" />
-                </div>
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-white text-xs font-bold leading-tight">WhatsApp Support</div>
-                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">+234 812 012 4847</div>
-              </div>
-              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-emerald-400 flex-shrink-0 transition-colors" />
+            
+            <p className="text-zinc-400 text-xs leading-relaxed">
+              Premium car rental services offering luxury vehicles for self-drive, chauffeur services, and corporate rentals. Experience comfort and reliability.
+            </p>
+            
+            <a href="tel:07062002717" className="flex items-center gap-2 text-white font-semibold text-sm hover:text-red-500 transition-colors">
+              <Phone className="w-4 h-4 text-red-500" />
+              0706 200 2717
             </a>
-
-            {/* Instagram */}
-            <a
-              href="https://instagram.com/realcarstransport"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-pink-500/40 hover:bg-pink-950/20 transition-all duration-200 group"
-            >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center group-hover:bg-pink-500/20 group-hover:border-pink-500/40 transition-all">
-                <InstagramIcon className="w-5 h-5 text-pink-400" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-white text-xs font-bold leading-tight">Instagram</div>
-                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">@realcarstransport</div>
-              </div>
-              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-pink-400 flex-shrink-0 transition-colors" />
-            </a>
-
-            {/* Facebook */}
-            <a
-              href="https://facebook.com/realcarstransportmondial"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-blue-500/40 hover:bg-blue-950/20 transition-all duration-200 group"
-            >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/40 transition-all">
-                <FacebookIcon className="w-5 h-5 text-blue-400" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-white text-xs font-bold leading-tight">Facebook</div>
-                <div className="text-zinc-500 text-[10px] font-medium mt-0.5">realcarstransportmondial</div>
-              </div>
-              <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-blue-400 flex-shrink-0 transition-colors" />
-            </a>
-
-            {/* Phone — direct call CTA */}
-            <a
-              href="tel:07062002717"
-              className="flex items-center gap-3 p-3 rounded-xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 hover:border-red-500/50 transition-all duration-200 group"
-            >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center group-hover:bg-red-500/30 transition-all">
-                <Phone className="w-5 h-5 text-red-400" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-white text-xs font-bold leading-tight">Call Directly</div>
-                <div className="text-zinc-400 text-[10px] font-medium mt-0.5">0706 200 2717</div>
-              </div>
-              <span className="flex-shrink-0 text-[9px] font-black uppercase tracking-wider text-red-400 bg-red-500/10 border border-red-500/20 rounded-full px-2 py-0.5">
-                Live
-              </span>
-            </a>
-
           </div>
 
-          {/* VIP Newsletter Form */}
-          <form onSubmit={handleNewsletterSubmit} className="space-y-2 pt-2">
-            <span className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">Join VIP Fleet List</span>
-            <div className="flex gap-2">
+          {/* Column 2: COMPANY */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Company</h3>
+            <ul className="space-y-3 text-zinc-400">
+              <li><a className="hover:text-red-500 transition-colors" href="#about">About Us</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#fleet">Our Fleet</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#pricing">Pricing</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#careers">Careers</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#blog">Blog</a></li>
+            </ul>
+          </div>
+
+          {/* Column 3: SERVICES */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Services</h3>
+            <ul className="space-y-3 text-zinc-400">
+              <li><a className="hover:text-red-500 transition-colors" href="#services">Self Drive</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#services">Chauffeur Service</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#services">Interstate Trips</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#services">Airport Transfers</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#services">Corporate Rentals</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4: HELP & SUPPORT */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Help & Support</h3>
+            <ul className="space-y-3 text-zinc-400">
+              <li><a className="hover:text-red-500 transition-colors" href="#faq">FAQs</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#booking">Booking Guide</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#terms">Terms & Conditions</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#privacy">Privacy Policy</a></li>
+              <li><a className="hover:text-red-500 transition-colors" href="#cancellation">Cancellation Policy</a></li>
+            </ul>
+          </div>
+
+          {/* Column 5: CONTACT US */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Contact Us</h3>
+            <ul className="space-y-3 text-zinc-400">
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                <span className="text-xs">Beside Oyebade close, FUTA Southgate, Akure, Ondo State</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <a href="tel:07062002717" className="hover:text-red-500 transition-colors">0706 200 2717</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <a href="mailto:info@realcarstransport.com" className="hover:text-red-500 transition-colors">info@realcarstransport.com</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <HeadphonesIcon className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <span className="text-xs">24/7 Customer Support</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 6: NEWSLETTER */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase font-extrabold tracking-widest text-white">Newsletter</h3>
+            <p className="text-zinc-400 text-xs leading-relaxed">
+              Subscribe for exclusive deals and updates.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-2">
               <input
-                required
                 type="email"
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
-                className="flex-1 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs text-white placeholder-zinc-600 outline-none transition focus:border-red-500"
-                placeholder="name@email.com"
+                placeholder="Enter your email"
+                className="w-full px-3 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-white text-xs placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-colors"
               />
               <button
                 type="submit"
-                className="rounded-lg bg-red-500 px-3 py-2 text-xs font-bold text-white hover:bg-red-600 transition-colors cursor-pointer"
+                className="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors"
               >
-                Join
+                Subscribe
               </button>
-            </div>
-            <AnimatePresence>
               {newsletterSuccess && (
-                <motion.p
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="text-[10px] text-emerald-400 font-semibold"
-                >
-                  Successfully joined VIP club list!
-                </motion.p>
+                <p className="text-emerald-400 text-xs">Subscribed successfully!</p>
               )}
-            </AnimatePresence>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
 
-      {/* Global Footer Credits */}
-      <div className="mx-auto w-full max-w-6xl px-6 mt-16 pt-8 border-t border-zinc-900 text-center text-xs text-zinc-600 font-medium">
-        © {new Date().getFullYear()} Real Cars Transport Mondial. Crafted for Luxury & Safety. All rights reserved.
+        {/* Bottom Section */}
+        <div className="border-t border-zinc-900 pt-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            
+            {/* Copyright */}
+            <p className="text-zinc-500 text-xs text-center lg:text-left">
+              © {new Date().getFullYear()} Real Cars Transport. All rights reserved. Built with ❤️ for a better travel experience.
+            </p>
+
+            {/* Social Media & WhatsApp */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex items-center gap-4">
+                <span className="text-zinc-500 text-[10px] uppercase font-bold tracking-wider hidden sm:block">Follow Us</span>
+                <div className="flex items-center gap-2">
+                  <a href="https://instagram.com/realcarstransport" target="_blank" rel="noreferrer" className="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center hover:bg-pink-500/20 hover:border-pink-500/40 border border-zinc-800 transition-all">
+                    <InstagramIcon className="w-4 h-4 text-zinc-400 hover:text-pink-400" />
+                  </a>
+                  <a href="https://facebook.com/realcarstransportmondial" target="_blank" rel="noreferrer" className="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-500/40 border border-zinc-800 transition-all">
+                    <FacebookIcon className="w-4 h-4 text-zinc-400 hover:text-blue-400" />
+                  </a>
+                  <a href="#" target="_blank" rel="noreferrer" className="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center hover:bg-zinc-800 hover:border-zinc-700 border border-zinc-800 transition-all">
+                    <TwitterIcon className="w-4 h-4 text-zinc-400 hover:text-white" />
+                  </a>
+                  <a href="#" target="_blank" rel="noreferrer" className="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-500/40 border border-zinc-800 transition-all">
+                    <LinkedInIcon className="w-4 h-4 text-zinc-400 hover:text-blue-400" />
+                  </a>
+                </div>
+              </div>
+              
+              <a
+                href="https://wa.me/2349039944383"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 bg-zinc-900 border border-red-500 hover:border-red-400 text-white px-4 py-3 rounded-lg transition-all hover:bg-zinc-800 w-full sm:w-auto justify-center"
+              >
+                <WhatsAppIcon className="w-7 h-7 text-emerald-500" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold">Chat on WhatsApp</span>
+                  <span className="text-[10px] text-zinc-400">Quick replies</span>
+                </div>
+                <ArrowRight className="w-4 h-4 text-white ml-auto" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

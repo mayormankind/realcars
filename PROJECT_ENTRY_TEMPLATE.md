@@ -2,7 +2,7 @@
 
 You have just finished helping build a project. I need you to generate a JSON object
 that describes this project for my developer portfolio CMS. I will copy the values
-from your JSON and paste them into the corresponding form fields in my admin dashboard.
+from your JSON and paste them into the corresponding form fields in my admin dashboard. For the video url and those you can't provide, leave them empty, i will do that myself.
 
 Read the field guide below carefully before filling anything in. Then output a single,
 complete, valid JSON object using the template at the bottom. Do not skip any field —

@@ -1,0 +1,95 @@
+{
+  "title": "RealCars",
+  "slug": "realcars",
+  "subtitle": "Luxury Car Rental",
+  "category": "Frontend",
+  "period": "Q2 2026",
+  "tags": ["Luxury Services", "React", "TypeScript"],
+  "shortDescription": "Premium luxury car rental website with scroll-linked animations, fleet management, and WhatsApp-integrated booking system built with React and TypeScript.",
+  "longDescription": "A modern luxury car rental platform serving Ondo State, Nigeria, offering chauffeur-driven services, self-drive options, inter-state travel, and contract driver services. Features an elegant dark-themed UI with sophisticated scroll animations and seamless booking integration.",
+  "heroImage": "",
+  "demoVideoUrl": "",
+  "details": {
+    "challenge": {
+      "subtitle": "01 — The Challenge",
+      "title": "Premium Digital Experience",
+      "description": "Creating a luxury car rental website that conveys trust, sophistication, and premium brand positioning while providing seamless booking functionality across all devices. The challenge was to balance visual elegance with practical usability for a regional transport service."
+    },
+    "strategy": {
+      "subtitle": "02 — The Strategy",
+      "title": "Modern React Architecture",
+      "description": "Built with React 19 and TypeScript for type safety, using Framer Motion for sophisticated scroll-linked animations including a velocity-based car tilting effect. Implemented a component-based architecture with Tailwind CSS 4 for rapid, consistent styling and responsive design across mobile, tablet, and desktop."
+    },
+    "impact": {
+      "subtitle": "03 — The Impact",
+      "title": "Elegant User Experience",
+      "description": "Delivered a responsive, animated interface with smooth scrolling interactions, a premium dark theme, and WhatsApp-integrated booking that streamlines the reservation process. The modular architecture enables easy fleet updates and service additions while maintaining consistent performance."
+    }
+  },
+  "metrics": [
+    {
+      "label": "Components",
+      "value": "11",
+      "subtext": "Reusable modules"
+    },
+    {
+      "label": "Fleet Categories",
+      "value": "3",
+      "subtext": "Luxury, SUV, Economy"
+    },
+    {
+      "label": "Core Services",
+      "value": "5",
+      "subtext": "Service offerings"
+    }
+  ],
+  "architecture": {
+    "title": "Component-Based SPA",
+    "subtitle": "Frontend Architecture",
+    "diagramType": "stack",
+    "description": "React Components → Framer Motion Animations → Tailwind CSS Styling",
+    "points": [
+      {
+        "iconName": "Layout",
+        "title": "Component Architecture",
+        "description": "Modular React components with TypeScript interfaces for type-safe props. Includes Header, Hero, Services with scroll-linked highway animation, FleetCarousel, Fleet with filtering, BookingForm with WhatsApp integration, FAQ, and Footer."
+      },
+      {
+        "iconName": "GaugeCircle",
+        "title": "Animation System",
+        "description": "Framer Motion powers scroll-linked animations including a top-down car that drives along a virtual highway with velocity-based tilting. Uses useScroll, useTransform, useVelocity, and AnimatePresence for smooth, performant transitions."
+      },
+      {
+        "iconName": "Settings2",
+        "title": "State Management",
+        "description": "React useState hooks manage booking category selection, fleet type filtering, and service card activation based on scroll position. State flows from fleet selection to booking form pre-population for seamless user experience."
+      }
+    ]
+  },
+  "lessons": [
+    {
+      "iconName": "GaugeCircle",
+      "title": "Animation Performance Balance",
+      "description": "Balanced complex scroll-linked animations with performance by using Framer Motion's optimized transforms and avoiding layout thrusting. The velocity-based car tilt effect adds sophistication without impacting scroll performance.",
+      "highlight": "Framer Motion"
+    },
+    {
+        "iconName": "Code",
+      "title": "TypeScript Type Safety",
+      "description": "TypeScript interfaces for FleetType, ServiceItem, FaqItem, and component props prevented runtime errors and significantly improved developer experience with autocomplete. The type system caught bugs early and made refactoring safer.",
+      "highlight": "Type Safety"
+    }
+  ],
+  "docs": [
+    {
+      "iconName": "FileText",
+      "title": "Project README",
+      "href": "#"
+    }
+  ],
+  "techStack": ["React 19", "TypeScript", "Vite", "Tailwind CSS 4", "Framer Motion", "Lucide React", "React Router DOM"],
+  "links": {
+    "live": "#",
+    "repo": ""
+  }
+}

@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useVelocity, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
 import { servicesData } from "../utils/mockData";
 import TopDownCar from "./TopDownCar";
 
@@ -57,22 +56,90 @@ export default function Services() {
       </div>
 
       {/* Scroll-Linked highway and cards container */}
-      <div className="relative mt-16 grid grid-cols-[36px_1fr] md:grid-cols-[100px_1fr] gap-4 md:gap-12 pl-1">
+      <div className="relative mt-16 grid grid-cols-1 lg:grid-cols-[1fr_100px_1fr] gap-8 lg:gap-12">
 
-        {/* The Vertical Highway Lane */}
-        <div className="relative justify-self-center w-3 md:w-10 bg-zinc-950 border-x border-zinc-900 rounded-full py-6 shadow-inner shadow-black/80">
+        {/* Left Services Cards */}
+        <div className="space-y-8 order-2 lg:order-1">
+          {servicesData.slice(0, Math.ceil(servicesData.length / 2)).map((service, index) => {
+            const isActive = activeServiceIndex === index;
+
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-120px" }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className={`relative p-6 md:p-8 rounded-xl border transition-all duration-500 premium-shimmer overflow-hidden group cursor-pointer ${
+                  isActive
+                    ? "border-yellow-500/60 shadow-[0_0_30px_rgba(234,179,8,0.18)] bg-zinc-900/70 scale-[1.02]"
+                    : "border-zinc-800/80 bg-zinc-900/40 shadow-md hover:border-red-500/50 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(239,68,68,0.15)]"
+                }`}
+              >
+                {/* Simulated headlight beam reflection overlay */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_left_center,rgba(254,240,138,0.28)_0%,rgba(234,179,8,0.12)_45%,rgba(234,179,8,0.02)_70%,transparent_100%)] pointer-events-none z-0"
+                      style={{ mixBlendMode: "screen" }}
+                    />
+                  )}
+                </AnimatePresence>
+
+                <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4">
+                  {/* Service Image */}
+                  <div className="relative w-full md:w-32 h-24 md:h-20 rounded-lg overflow-hidden flex-shrink-0">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  </div>
+
+                  <div className="flex-1 space-y-2">
+                    <h3
+                      className={`text-lg md:text-xl font-bold transition-colors duration-300 ${
+                        isActive
+                          ? "text-yellow-400 drop-shadow-[0_0_8px_rgba(234,179,8,0.55)]"
+                          : "text-white group-hover:text-red-400"
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
+                    <p className={`transition-colors duration-300 text-sm leading-relaxed ${
+                      isActive ? "text-zinc-200" : "text-zinc-400"
+                    }`}>
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* The Vertical Highway Lane - Centered */}
+        <div className="relative justify-self-center w-3 md:w-10 bg-zinc-950 border-x border-zinc-900 rounded-full py-6 shadow-inner shadow-black/80 order-1 lg:order-2 my-8 lg:my-0">
           {/* Animated moving road dashes — scrolls continuously to feel like the car is driving */}
           <div
             className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] animate-road-scroll"
             style={{
-              backgroundImage: "repeating-linear-gradient(to bottom, #52525b 0px, #52525b 12px, transparent 12px, transparent 24px)",
+              backgroundImage: "repeating-linear-gradient(to bottom, #facc15 0px, #facc15 8px, transparent 8px, transparent 24px)",
               backgroundSize: "2px 24px",
+              filter: "drop-shadow(0 0 4px rgba(250, 204, 21, 0.3))",
             }}
           />
 
           {/* Animated top-down luxury car linked to viewport scroll progress */}
           <motion.div
             style={{ top: carTop, rotate: carRotate }}
+            animate={{ y: [0, -2, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
             className="absolute left-1/2 -translate-x-1/2 z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
           >
             <TopDownCar className="w-7 h-12 md:w-12 md:h-22" />
@@ -92,11 +159,11 @@ export default function Services() {
           </motion.div>
         </div>
 
-        {/* Services Cards Checklist */}
-        <div className="space-y-8 pr-1">
-          {servicesData.map((service, index) => {
-            const IconComponent = service.icon;
-            const isActive = activeServiceIndex === index;
+        {/* Right Services Cards */}
+        <div className="space-y-8 order-3">
+          {servicesData.slice(Math.ceil(servicesData.length / 2)).map((service, index) => {
+            const actualIndex = Math.ceil(servicesData.length / 2) + index;
+            const isActive = activeServiceIndex === actualIndex;
 
             return (
               <motion.div
@@ -105,57 +172,48 @@ export default function Services() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-120px" }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className={`relative p-6 md:p-8 rounded-xl border transition-all duration-500 premium-shimmer overflow-hidden group ${
+                className={`relative p-6 md:p-8 rounded-xl border transition-all duration-500 premium-shimmer overflow-hidden group cursor-pointer ${
                   isActive
                     ? "border-yellow-500/60 shadow-[0_0_30px_rgba(234,179,8,0.18)] bg-zinc-900/70 scale-[1.02]"
-                    : "border-zinc-800/80 bg-zinc-900/40 shadow-md hover:border-red-500/30"
+                    : "border-zinc-800/80 bg-zinc-900/40 shadow-md hover:border-red-500/50 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(239,68,68,0.15)]"
                 }`}
               >
                 {/* Simulated headlight beam reflection overlay */}
                 <AnimatePresence>
                   {isActive && (
                     <motion.div
-                      initial={{ opacity: 0, x: -30 }}
+                      initial={{ opacity: 0, x: 30 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.4 }}
-                      className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_left_center,rgba(254,240,138,0.28)_0%,rgba(234,179,8,0.12)_45%,rgba(234,179,8,0.02)_70%,transparent_100%)] pointer-events-none z-0"
+                      className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_right_center,rgba(254,240,138,0.28)_0%,rgba(234,179,8,0.12)_45%,rgba(234,179,8,0.02)_70%,transparent_100%)] pointer-events-none z-0"
                       style={{ mixBlendMode: "screen" }}
                     />
                   )}
                 </AnimatePresence>
 
-                <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4">
-                  {/* Premium Icon Badge */}
-                  <div
-                    className={`self-start rounded-lg p-3 border transition-all duration-300 ${
-                      isActive
-                        ? "bg-yellow-500 text-black border-yellow-400 scale-110 shadow-md shadow-yellow-500/20"
-                        : "bg-zinc-900 text-red-500 border-zinc-800 group-hover:text-white group-hover:bg-red-500"
-                    }`}
-                  >
-                    <IconComponent size={24} className="transition-transform group-hover:scale-110" />
+                <div className="relative z-10 flex flex-col md:flex-row-reverse md:items-start gap-4">
+                  {/* Service Image */}
+                  <div className="relative w-full md:w-32 h-24 md:h-20 rounded-lg overflow-hidden flex-shrink-0">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="flex-1 space-y-2">
                     <h3
-                      className={`text-xl font-bold transition-colors duration-300 flex items-center gap-2 ${
+                      className={`text-lg md:text-xl font-bold transition-colors duration-300 ${
                         isActive
                           ? "text-yellow-400 drop-shadow-[0_0_8px_rgba(234,179,8,0.55)]"
                           : "text-white group-hover:text-red-400"
                       }`}
                     >
                       {service.title}
-                      <ChevronRight
-                        size={16}
-                        className={`transition-all ${
-                          isActive
-                            ? "text-yellow-500 translate-x-1"
-                            : "text-zinc-600 group-hover:text-red-500 group-hover:translate-x-1"
-                        }`}
-                      />
                     </h3>
-                    <p className={`transition-colors duration-300 text-sm leading-relaxed max-w-3xl ${
+                    <p className={`transition-colors duration-300 text-sm leading-relaxed ${
                       isActive ? "text-zinc-200" : "text-zinc-400"
                     }`}>
                       {service.description}
