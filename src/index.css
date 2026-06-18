@@ -129,6 +129,16 @@
   animation: road-scroll 0.32s linear infinite;
 }
 
+/* Moving horizontal road dashes for mobile car animation */
+@keyframes road-scroll-h {
+  from { background-position: 0px center; }
+  to   { background-position: -24px center; }
+}
+
+.animate-road-scroll-h {
+  animation: road-scroll-h 0.32s linear infinite;
+}
+
 /* Hide scrollbar on fleet carousel while keeping scroll functionality */
 .carousel-scroll {
   scrollbar-width: none;

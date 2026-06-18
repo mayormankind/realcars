@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { faqs } from "../utils/mockData";
 
 export default function Faq() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <section id="faq" className="bg-zinc-950 py-24 border-t border-zinc-900">
